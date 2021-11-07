@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../static/css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container">
@@ -15,11 +16,28 @@
             <h2>and escape your way out”</h2>
             <p>see mystery questions, get hints, solve them, and move to the next level</p>
             <div class="btn-container">
-                <input type="text" placeholder="Enter your email">
-                <button onclick="window.location.href='/level/1'">Start</button>
+                <input class="phone" type="text" placeholder="Enter your phone number">
+                <button class="start">Start</button>
             </div> 
         </div>
 
     </div>
 </body>
+<script>
+    const phone = document.querySelector('.phone')
+    const start = document.querySelector('.start')
+    start.addEventListener('click', e => {
+        e.preventDefault()
+        const d = phone.value
+        // console.log(phone.value)
+        $.ajax({
+      type: "POST",
+      url: "/level/1",
+
+      data: {
+         phone : d
+      }
+   })
+    })
+</script>
 </html>

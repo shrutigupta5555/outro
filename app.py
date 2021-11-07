@@ -37,16 +37,28 @@ def randlist(limit):
         randlist(limit+1)
     else:
         nums.append(lol)
+    return nums
 
 @app.route('/')
 def index(): 
-
     return render_template('index.html')
 
-@app.route('/level/<levelnum>')
+
+@app.route('/phone', methods=['GET', 'POST'])
+def phone(): 
+    
+    return ''
+
+@app.route('/level/<levelnum>', methods=['POST','GET'])
 def level(levelnum): 
+    
+ 
+    
     levelnum = int(levelnum)
     return render_template('level.html', ques = data.questions[levelnum-1], ans = data.answers[levelnum-1], hint = data.hints[levelnum-1], url="hehe", level = levelnum, next= levelnum+1)
+
+
+
 
 @app.route('/success')
 def success(): 

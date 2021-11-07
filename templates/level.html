@@ -45,8 +45,19 @@
         const value = ans.value.toLowerCase();
 
         if(value == "{{ans}}" && "{{level}}"!="5"){
-            window.location.href="/level/{{next}}"
+            // window.location.href="/level/{{next}}"
             // alert("correct, navigate to next screen")
+            $.ajax({
+      type: "POST",
+      url: "/level/{{next}}",
+
+      data: {
+         
+         phone: "{{num}}"
+      }
+   }).then(() => {
+       window.location.href = "/level/{{next}}"
+   }) 
         }
         else if(value == "{{ans}}" && "{{level}}"=="5"){
             window.location.href="/success"
