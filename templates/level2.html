@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../static/css/game.css"> -->
+    <title>Outro | Escape Room</title>
+</head>
+<body>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: white;
+    font-family: 'Poppins', 'sans-serif';
+
+}
+
+
+
+.container {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    background-color: #4E5C82;
+    background-image: url('../images/level.png');
+    object-fit: fill;
+    background-repeat: round;
+    overflow: hidden;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    align-items: center;
+    width: 75%;
+    /* background-color: blue; */
+    margin: 0 auto;
+}
+
+.content-img{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: rebeccapurple; */
+    width: 100%;
+    margin-bottom: 3rem;
+}
+
+.c-img {
+    height: 30vh;
+}
+
+.c-img img {
+    object-fit: contain;
+}
+
+.content-title{
+    background-color: black;
+    width: 100%;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-bottom: 20px;
+}
+
+input{
+    padding: 0.5rem 3rem;
+    border: none;
+    
+    background-color: black;
+
+}
+
+button{
+    margin-top: 10px;
+    border: none;
+    padding:0.75rem 2rem;
+    background-color: black;
+    color: #24FF00;
+    border-radius: 25px;
+}
+
+
+
+    </style>
+    <div class="container">
+        <h1>outro</h1>
+        <p>level {{level}}/5</p>
+        <div class="content">
+            <div class="content-title">
+                <p>{{ques}}</p>
+                </div>
+                <div class="content-img">
+                    <div class="c-img">
+                        <img src="{{url[0]}}" alt="" height="250rem" width="250rem">
+                    </div>
+                    <div class="c-img">
+                        <img src="{{url[1]}}" alt="" height="250rem" width="250rem">
+                    </div>
+                    <div class="c-img">
+                        <img src="{{url[2]}}" alt="" height="250rem" width="250rem">
+                    </div>
+                </div>
+
+                <input class="ans" type="text">
+                <button class="submit-btn">submit</button>
+
+                <h4 onclick="hehe()">can’t guess it quite right? get a hint</h4>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+  function  hehe(){
+var a = localStorage.getItem("mobile");
+window.location.href="/hintlevel/{{level}}/"+a;
+
+    }
+    const ans = document.querySelector(".ans")
+    const submit = document.querySelector(".submit-btn")
+
+    submit.addEventListener("click", e => {
+        e.preventDefault();
+
+        const value = ans.value.toLowerCase();
+
+        if(value == "{{ans}}" && "{{level}}"!="5"){
+            window.location.href="/level/{{next}}"
+            // alert("correct, navigate to next screen")
+      
+        }
+        else if(value == "{{ans}}" && "{{level}}"=="5"){
+            window.location.href="/success"
+        }
+        else {
+           window.location.href="/fail"
+        }
+    })
+</script>
+</html>

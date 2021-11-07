@@ -18,13 +18,13 @@ auth_token = os.getenv("AUTH_TOKEN")
 client = Client(account_sid, auth_token)
 
 
-def send_msg():
+def send_msg(mobile, hint):
     print()
     message = client.messages \
                 .create(
-                     body="Join Earth's mightiest heroes. Like Kevin Bacon.",
+                     body="your hint is: " +hint,
                      from_='+14844168079',
-                     to=''
+                     to=mobile
                  )
     print("success============")
     print(message.sid)
@@ -34,14 +34,17 @@ def randlist(limit):
     lol = random.randint(0, 9)
     # global limit = limit + 1
     if lol in nums and limit < 30: 
-        
         randlist(limit+1)
     else:
         nums.append(lol)
-    return nums
+    # return nums
 
 @app.route('/')
-def index(): 
+def index():
+    nums.clear()
+    for i in range(5):
+        randlist(0)
+    print(nums)
     return render_template('index.html')
 
 
@@ -53,13 +56,15 @@ def phone():
 
 @app.route('/level/<levelnum>')
 def level(levelnum): 
-    
- 
-    
     levelnum = int(levelnum)
-    return render_template('level.html', ques = data.questions[levelnum-1], ans = data.answers[levelnum-1], hint = data.hints[levelnum-1], url=data.img_url[levelnum-1], level = levelnum, next= levelnum+1)
+    return render_template('level.html', ques = data.questions[nums[levelnum-1]], ans = data.answers[nums[levelnum-1]], hint = data.hints[nums[levelnum-1]], url=data.img_url[nums[levelnum-1]], level = levelnum, next= levelnum+1)
 
 
+@app.route('/hintlevel/<levelnum>/<mobile>')
+def levelhint(levelnum, mobile):
+    send_msg(mobile, data.hints[nums[levelnum-1]])
+    levelnum = int(levelnum)
+    return render_template('level2.html', ques = data.questions[nums[levelnum-1]], ans = data.answers[nums[levelnum-1]], hint = data.hints[nums[levelnum-1]], url=data.img_url[nums[levelnum-1]], level = levelnum, next= levelnum+1)
 
 
 @app.route('/success')

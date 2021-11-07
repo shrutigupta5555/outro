@@ -17,7 +17,7 @@
             <p>see mystery questions, get hints, solve them, and move to the next level</p>
             <div class="btn-container">
                 <input class="phone" type="text" placeholder="Enter your phone number">
-                <button class="start">Start</button>
+                <button class="start" onclick="window.location.href='/level/1'">Start</button>
             </div> 
         </div>
 
@@ -30,16 +30,8 @@
         e.preventDefault()
         const d = phone.value
         console.log(d)
-        $.ajax({
-      type: "POST",
-      url: "/phone",
-
-      data: {
-         phone : phone.value
-      }
-   }).then(() => {
-       window.location.href = '/level/1'
-   })
+      localStorage.setItem("mobile", phone.value)
+      
     })
 </script>
 </html>
