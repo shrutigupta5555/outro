@@ -16,6 +16,7 @@ account_sid = os.getenv('ACC_SID')
 auth_token = os.getenv("AUTH_TOKEN")
 client = Client(account_sid, auth_token)
 
+
 def send_msg():
     print()
     message = client.messages \
@@ -28,20 +29,18 @@ def send_msg():
     print(message.sid)
 
 
-def randlist():
+def randlist(limit):
     lol = random.randint(0, 9)
     # global limit = limit + 1
-    if lol in nums:
-        randlist()
+    if lol in nums and limit < 30: 
+        
+        randlist(limit+1)
     else:
         nums.append(lol)
 
 @app.route('/')
 def index(): 
-    for i in range(5):
-        randlist()
-    # send_msg()
-    print(nums)
+
     return render_template('index.html')
 
 @app.route('/level/<levelnum>')
@@ -59,4 +58,5 @@ def fail():
 
 
 if __name__ == "__main__":
+    
     app.run(debug=True, threaded = True)
