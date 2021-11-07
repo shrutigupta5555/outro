@@ -1,5 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, g
 import os
+import flask
 from twilio.rest import Client
 from dotenv import load_dotenv
 import random
@@ -44,12 +45,13 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/phone', methods=['GET', 'POST'])
+@app.route('/phone', methods=['POST'])
 def phone(): 
+    p = request.values['phone']
     
     return ''
 
-@app.route('/level/<levelnum>', methods=['POST','GET'])
+@app.route('/level/<levelnum>')
 def level(levelnum): 
     
  

@@ -29,14 +29,16 @@
     start.addEventListener('click', e => {
         e.preventDefault()
         const d = phone.value
-        // console.log(phone.value)
+        console.log(d)
         $.ajax({
       type: "POST",
-      url: "/level/1",
+      url: "/phone",
 
       data: {
-         phone : d
+         phone : phone.value
       }
+   }).then(() => {
+       window.location.href = '/level/1'
    })
     })
 </script>
