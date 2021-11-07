@@ -62,8 +62,9 @@ def level(levelnum):
 
 @app.route('/hintlevel/<levelnum>/<mobile>')
 def levelhint(levelnum, mobile):
-    send_msg(mobile, data.hints[nums[levelnum-1]])
+    print(nums)
     levelnum = int(levelnum)
+    send_msg(mobile, data.hints[nums[levelnum-1]])
     return render_template('level2.html', ques = data.questions[nums[levelnum-1]], ans = data.answers[nums[levelnum-1]], hint = data.hints[nums[levelnum-1]], url=data.img_url[nums[levelnum-1]], level = levelnum, next= levelnum+1)
 
 
