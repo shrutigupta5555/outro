@@ -42,6 +42,14 @@
     margin-bottom: 3rem;
 }
 
+.c-img {
+    height: 30vh;
+}
+
+.c-img img {
+    object-fit: contain;
+}
+
 .content-title{
     background-color: black;
     width: 100%;
