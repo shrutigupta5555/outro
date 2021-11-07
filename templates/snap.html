@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:site_name" content="Outro" />
+    <meta property="og:title" content="share to snapchat" />
+    <meta property="snap:sticker" content="https://media.discordapp.net/attachments/873911460055642152/906862732349956106/Group_3.png"/>
+
+    <title>Outro | Share to Snap</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <style>
+        body{
+            background-color: #121212;
+        }
+    </style>
+
+    <!-- <p>{{url}}</p> -->
+    <br><br>
+   <center> <img src="https://media.discordapp.net/attachments/873911460055642152/906862732349956106/Group_3.png" alt="" width="30%"></center>
+   <br><br> 
+   <center><div class="snapchat-creative-kit-share share-button"  data-theme="dark">
+        <button
+          class="class1 class2 snapchat-share-button"
+        data-share-url="https://media.discordapp.net/attachments/873911460055642152/906862732349956106/Group_3.png"
+        >
+          Share on Snapchat
+        </button>
+    </div></center> 
+    
+        <!-- Other Page HTML -->
+    
+        <script>
+          // Load the SDK asynchronously
+          
+          (function (d, s, id) {
+            var js,
+              sjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://sdk.snapkit.com/js/v1/create.js";
+            sjs.parentNode.insertBefore(js, sjs);
+          })(document, "script", "snapkit-creative-kit-sdk");
+    
+          window.snapKitInit = function () {
+            snap.creativekit.initalizeShareButtons(
+              document.getElementsByClassName("snapchat-share-button")
+            );
+          };
+        </script>
+    
+</body>
+</html>
