@@ -56,6 +56,10 @@ def success():
 def fail(): 
     return render_template('fail.html')
 
+@app.route('/snap')
+def snap():
+    return render_template("snap.html")
+
 
 if __name__ == "__main__":
     
