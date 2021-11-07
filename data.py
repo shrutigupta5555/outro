@@ -1,0 +1,7 @@
+questions = ["Identify this music artist", "Identify the country", "Which upcoming gta game is the remastered version of all these games combined?", "Which country do these players represent in international cricket?", "Identify this beautiful coastal city", "Identify this mlher", "What are this kind of cameras called?", "What is this food dish called", "identify this music artist", "Identify this mlher"]
+
+hints = ["he's been a part of the famous band 'One Direction' and had his super successful album called 'mind of mine'", "located in Europe and known for the very famous Eiffel tower", "there has been a lot of hype about this rockstar games production since mid October 2021", "this country is located in South Asia and is very diverse", "also called the economic capital of India", "she's super swag and likes to troll Ryan at times","they're known to generate instant picture on the photo film","tastes spicy and is very common in india", "she released 2 successful albums in 2020, and also loves cats", "gets roasted by jack, also works at a major position at mlh"]
+
+answers = ["zayn", "france", "trilogy", "india", "mumbai", "jacklyn", "polaroid", "samosa","taylor", "ryan" ]
+
+img_url = [{"hhee"}, {}, ]

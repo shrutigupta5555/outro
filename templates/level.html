@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../static/css/game.css">
-    <title>Outro| Escape Room</title>
+    <title>Outro | Escape Room</title>
 </head>
 <body>
     <div class="container">
         <h1>outro</h1>
-        <p>level 1/5</p>
+        <p>level {{level}}/5</p>
         <div class="content">
             <div class="content-title">
-                <p>Identify this singer</p>
+                <p>{{ques}}</p>
                 </div>
                 <div class="content-img">
                     <div class="c-img">
@@ -44,10 +44,15 @@
 
         const value = ans.value.toLowerCase();
 
-        if(value == "zayn"){
-            alert("correct, navigate to next screen")
-        }else {
-            alert("neh")
+        if(value == "{{ans}}" && "{{level}}"!="5"){
+            window.location.href="/level/{{next}}"
+            // alert("correct, navigate to next screen")
+        }
+        else if(value == "{{ans}}" && "{{level}}"=="5"){
+            window.location.href="/success"
+        }
+        else {
+           window.location.href="/fail"
         }
     })
 </script>
