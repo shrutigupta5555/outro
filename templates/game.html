@@ -27,12 +27,28 @@
                     </div>
                 </div>
 
-                <input type="text">
-                <button>submit</button>
+                <input class="ans" type="text">
+                <button class="submit-btn">submit</button>
 
                 <h4>can’t guess it quite right? get a hint</h4>
             </div>
         </div>
     </div>
 </body>
+<script>
+    const ans = document.querySelector(".ans")
+    const submit = document.querySelector(".submit-btn")
+
+    submit.addEventListener("click", e => {
+        e.preventDefault();
+
+        const value = ans.value.toLowerCase();
+
+        if(value == "zayn"){
+            alert("correct, navigate to next screen")
+        }else {
+            alert("neh")
+        }
+    })
+</script>
 </html>
