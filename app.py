@@ -19,12 +19,12 @@ client = Client(account_sid, auth_token)
 
 
 def send_msg(mobile, hint):
-    print()
+    print(mobile, "=============================================")
     message = client.messages \
                 .create(
                      body="your hint is: " +hint,
                      from_='+14844168079',
-                     to=mobile
+                     to=f"{mobile}"
                  )
     print("success============")
     print(message.sid)
@@ -57,14 +57,16 @@ def phone():
 @app.route('/level/<levelnum>')
 def level(levelnum): 
     levelnum = int(levelnum)
-    return render_template('level.html', ques = data.questions[nums[levelnum-1]], ans = data.answers[nums[levelnum-1]], hint = data.hints[nums[levelnum-1]], url=data.img_url[nums[levelnum-1]], level = levelnum, next= levelnum+1)
+    return render_template('level.html', ques = data.questions[nums[levelnum-1]], ans = data.answers[nums[levelnum-1]], hint = data.hints[nums[levelnum-1]], url=data.img_url[nums[levelnum-1]], level = levelnum, next= levelnum+1, baamzi = nums[levelnum - 1])
 
 
-@app.route('/hintlevel/<levelnum>/<mobile>')
-def levelhint(levelnum, mobile):
-    send_msg(mobile, data.hints[nums[levelnum-1]])
+@app.route('/hintlevel/<levelnum>/<baamzi>/<mobile>')
+def levelhint(levelnum,baamzi, mobile):
+    baamzi = int(baamzi)
     levelnum = int(levelnum)
-    return render_template('level2.html', ques = data.questions[nums[levelnum-1]], ans = data.answers[nums[levelnum-1]], hint = data.hints[nums[levelnum-1]], url=data.img_url[nums[levelnum-1]], level = levelnum, next= levelnum+1)
+    print(nums, levelnum - 1)
+    send_msg(str(mobile),data.hints[baamzi])
+    return render_template('level2.html', ques = data.questions[baamzi], ans = data.answers[baamzi], hint = data.hints[baamzi], url=data.img_url[baamzi], level = levelnum, next= levelnum+1)
 
 
 @app.route('/success')
