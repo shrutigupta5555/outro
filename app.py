@@ -47,7 +47,7 @@ def index():
 @app.route('/level/<levelnum>')
 def level(levelnum): 
     levelnum = int(levelnum)
-    return render_template('level.html', ques = data.questions[levelnum-1], ans = data.answers[levelnum-1], hint = data.hints[levelnum-1], url="hehe", level = levelnum, next= levelnum+1)
+    return render_template('level.html', ques = data.questions[levelnum-1], ans = data.answers[levelnum-1], hint = data.hints[levelnum-1], url=data.img_url[levelnum-1], level = levelnum, next= levelnum+1)
 
 @app.route('/success')
 def success(): 
