@@ -19,7 +19,7 @@ def send_msg():
                 .create(
                      body="Join Earth's mightiest heroes. Like Kevin Bacon.",
                      from_='+14844168079',
-                     to='+918928581039'
+                     to=''
                  )
     print("success============")
     # print(message.sid)
